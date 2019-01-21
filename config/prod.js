@@ -1,7 +1,7 @@
 module.exports = {
-    googleClientID: process.env.GOOGLE_CLIENT_ID,
-    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    mongoURI: process.env.MONGO_URI,
-    cookieKey: process.env.COOKIE_KEY,
-    googleRedirectURI: "https://bayou.herokuapp.com"
+    googleClientID:
+        "1074056727670-8j8tjgiucatic80dno91r5airegppoph.apps.googleusercontent.com",
+    googleClientSecret: "KP3WHjnifwVg4uMT1MTowfYs",
+    mongoURI: "mongodb://alexanderchan:Alexander1@ds159634.mlab.com:59634/projectk-dev",
+    cookieKey: "slkdfjlskdjflskdjflksdfsasertyuio"
 };
