@@ -5,6 +5,7 @@ const keys = require("../config/keys");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
+    console.log(keys.googleClientID)
     done(null, user.id);
 });
 
@@ -13,8 +14,8 @@ passport.deserializeUser((id, done) => {
         done(null, user);
     });
 });
-
 passport.use(
+
     // GoogleStrategy vet att den ska söka efter strängen "google" när vi kör passport.authenticate
     new GoogleStrategy(
         {

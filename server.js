@@ -22,5 +22,10 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 
+console.log(keys.googleClientID);
+
+
 const PORT = process.env.PORT || 5000;
-app.listen("production");
+console.log(PORT)
+
+app.listen(PORT);
