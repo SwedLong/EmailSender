@@ -24,8 +24,7 @@ require("./routes/authRoutes")(app);
 
 console.log(keys.googleClientID);
 
-
 const PORT = process.env.PORT || 5000;
-console.log(PORT)
+console.log(PORT);
 
 app.listen(PORT);
