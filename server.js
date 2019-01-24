@@ -1,6 +1,6 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const cookieSession = require("cookie-session");
+// const mongoose = require("mongoose");
+// const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 const passport = require("passport");
 require("./models/User");
@@ -10,22 +10,21 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-app.use(
-    cookieSession({
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [keys.cookieKey]
-    })
-);
+// app.use(
+//     cookieSession({
+//         maxAge: 30 * 24 * 60 * 60 * 1000,
+//         keys: [keys.cookieKey]
+//     })
+// );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 
 console.log(keys.googleClientID);
 
-
 const PORT = process.env.PORT || 5000;
-console.log(PORT)
+console.log(PORT);
 
 app.listen(PORT);
