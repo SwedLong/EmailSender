@@ -13,9 +13,9 @@ module.exports = app => {
         }
     );
 
-    app.get("/", (req, res) => {
-        res.send({ message: "Welcome" });
-    });
+    // app.get("/", (req, res) => {
+    //     res.send({ message: "Welcome" });
+    // });
 
     app.get("/api/logout", (req, res) => {
         req.logout();
