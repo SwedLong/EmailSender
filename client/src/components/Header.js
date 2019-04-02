@@ -16,13 +16,16 @@ const Nav = styled.nav`
     align-items: center;
     color: #FFFFFF
     display: flex;
+    font-size: 18px;
     justify-content: flex-end;
+    text-transform:
 `;
 
 const A = styled.a`
     color: #FFFFFF
-    margin-right: 8px;
+    margin-right: 16px;
     text-decoration: none;
+    letter-spacing: 1px;
 `;
 
 const Img = styled.img`
