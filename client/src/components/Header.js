@@ -2,6 +2,35 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
+import styled, { css } from "styled-components";
+
+const NavContainer = styled.div`
+    align-items: center;
+    background-color: #4abdac;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+`;
+
+const Nav = styled.nav`
+    align-items: center;
+    color: #FFFFFF
+    display: flex;
+    justify-content: flex-end;
+`;
+
+const A = styled.a`
+    color: #FFFFFF
+    margin-right: 8px;
+    text-decoration: none;
+`;
+
+const Img = styled.img`
+    max-width: 100%;
+    height: 40px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+`;
 
 class Header extends Component {
     renderContent() {
@@ -9,37 +38,40 @@ class Header extends Component {
             case null:
                 return;
             case false:
-                return (
-                    <li>
-                        <a href="/auth/google">Log in with Google</a>
-                    </li>
-                );
+                return <A href="/auth/google">Log in with Google</A>;
             default:
                 return [
-                    <li key="1">
+                    <A key="1">
                         <Payments />
-                    </li>,
-                    <li key="3" style={{ margin: "0 10px" }}>
-                        Credits: {this.props.auth.credits}
-                    </li>,
-                    <li key="2">
-                        <a href="/api/logout">Logout</a>
-                    </li>
+                    </A>,
+                    <A key="2">Credits: {this.props.auth.credits}</A>,
+                    <A key="3" href="/api/logout">
+                        Logout
+                    </A>
                 ];
         }
     }
     render() {
-        console.log("auth", this.props.auth);
+        console.log(this.props.auth);
+
         return (
-            <nav>
-                <div className="nav-wrapper">
+            <NavContainer>
+                <Nav>
                     <Link
                         to={this.props.auth ? "/surveys" : "/"}
                         className="left brand-logo"
                     />
-                    <ul className="right">{this.renderContent()}</ul>
-                </div>
-            </nav>
+                    {this.renderContent()}
+                    <Img
+                        src={
+                            this.props.auth
+                                ? this.props.auth.googlePhotoUrl
+                                : ""
+                        }
+                        alt="Profile picture"
+                    />
+                </Nav>
+            </NavContainer>
         );
     }
 }

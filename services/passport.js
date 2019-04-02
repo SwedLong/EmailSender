@@ -5,7 +5,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const keys = require("../config/keys");
 
 passport.serializeUser((user, done) => {
-    console.log(keys.googleClientID);
     done(null, user.id);
 });
 
@@ -24,6 +23,9 @@ passport.use(
             proxy: true
         },
         async (accessToken, refreshToken, profile, done) => {
+            const { value: googlePhotoUrl } = profile.photos[0];
+            console.log(googlePhotoUrl);
+
             //findOne retunerar en Promise
             const existingUser = await User.findOne({ googleID: profile.id });
 
@@ -32,7 +34,7 @@ passport.use(
                 return done(null, existingUser);
             }
             // make new user
-            const user = await new User({ googleID: profile.id }).save();
+            const user = await new User({ googleID: profile.id, googlePhotoUrl: googlePhotoUrl }).save();
             done(null, user);
         }
     )
