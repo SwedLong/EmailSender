@@ -31,12 +31,12 @@ const A = styled.a`
 const Img = styled.img`
     max-width: 100%;
     height: 40px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     border-radius: 50%;
 `;
 
 class Header extends Component {
-    renderContent() {
+    renderNavContent() {
         switch (this.props.auth) {
             case null:
                 return;
@@ -54,17 +54,16 @@ class Header extends Component {
                 ];
         }
     }
-    render() {
-        console.log(this.props.auth);
 
-        return (
-            <NavContainer>
-                <Nav>
-                    <Link
-                        to={this.props.auth ? "/surveys" : "/"}
-                        className="left brand-logo"
-                    />
-                    {this.renderContent()}
+    renderProfilePicture() {
+        console.log(this.props.auth)
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return;
+            default:
+                return (
                     <Img
                         src={
                             this.props.auth
@@ -73,6 +72,19 @@ class Header extends Component {
                         }
                         alt="Profile picture"
                     />
+                );
+        }
+    }
+    render() {
+        return (
+            <NavContainer>
+                <Nav>
+                    {/* <Link
+                        to={this.props.auth ? "/surveys" : "/"}
+                        className="left brand-logo"
+                    /> */}
+                    {this.renderNavContent()}
+                    {this.renderProfilePicture()}
                 </Nav>
             </NavContainer>
         );
