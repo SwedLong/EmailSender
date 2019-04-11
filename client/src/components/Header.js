@@ -56,7 +56,7 @@ class Header extends Component {
     }
 
     renderProfilePicture() {
-        console.log(this.props.auth)
+        console.log(this.props.auth);
         switch (this.props.auth) {
             case null:
                 return;
@@ -79,10 +79,6 @@ class Header extends Component {
         return (
             <NavContainer>
                 <Nav>
-                    {/* <Link
-                        to={this.props.auth ? "/surveys" : "/"}
-                        className="left brand-logo"
-                    /> */}
                     {this.renderNavContent()}
                     {this.renderProfilePicture()}
                 </Nav>
